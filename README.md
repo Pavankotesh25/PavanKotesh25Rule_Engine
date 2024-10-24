@@ -16,16 +16,19 @@ TEST CASE 1: Create individual rules and verify AST representation.
 Rule 1 AST: (>, 'age', '30') AND (==, 'department', 'Sales')
 Rule 2 AST: (>, 'salary', '50000') OR (>, 'experience', '5')
 Rule 3 AST: (<, 'age', '25') AND (==, 'department', 'Marketing')
+
 TEST CASE 2: Combine rules and verify the combined AST.
 
 Combined AST (AND): ((((age > 30) AND (department == 'Sales')) AND ((salary > 50000) OR (experience > 5))) AND ((age < 25) AND (department == 'Marketing')))
 Combined AST (OR): ((((age > 30) AND (department == 'Sales')) OR ((salary > 50000) OR (experience > 5))) OR ((age < 25) AND (department == 'Marketing')))
+
 TEST CASE 3: Test evaluate_rule with sample JSON data for different scenarios.
 
 User eligibility (AND): False
 User eligibility (OR): True
 New data eligibility (AND): False
 New data eligibility (OR): True
+
 TEST CASE 4: Explore combining additional rules and test invalid rule functionality.
 
 Invalid rule test: TypeError - Invalid comparison between int and str
